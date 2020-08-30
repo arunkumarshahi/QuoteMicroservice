@@ -1,9 +1,7 @@
 sudo minikube delete
 sudo minikube start
 
-cd nginx-controller-ingress
 sudo ./startup.sh
-cd ..
 cd QuoteMicroservice-client
 sudo mvn clean install
 sudo ./deployment-service-client.sh

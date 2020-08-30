@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.test.quote.model.QuoteTO;
 import com.test.quote.service.ServiceClient;
 
 import lombok.extern.slf4j.Slf4j;
@@ -33,19 +34,32 @@ public class ClientController {
     @Autowired
     ServiceClient serviceClient;
     
-    @GetMapping("/proxy/{quoteId}")
-    public String findByOrganizationWithEmployees(@PathVariable("quoteId") String quoteId) {
+    @GetMapping("/proxy")
+    public List<QuoteTO> findByOrganizationWithEmployees() {
      log.info("*********** proxy is called here *********");
-     Object departments = serviceClient.getQuote();
+     List<QuoteTO> departments = serviceClient.getQuotes();
     
      if(departments==null) {
     	 log.info("*********** proxy is called in not null *********");
      }else {
     	 log.info("*********** proxy is called here in null*********");
      }
-     return String.valueOf(departments);
+     return departments;
     }
 
+    @GetMapping("/proxy/{quoteId}")
+    public QuoteTO findQuoteById(@PathVariable("quoteId") String quoteId) {
+     log.info("*********** proxy is called here *********");
+     QuoteTO departments = serviceClient.getSingleQuote(quoteId);
+    
+     if(departments==null) {
+    	 log.info("*********** proxy is called in not null *********");
+     }else {
+    	 log.info("*********** proxy is called here in null*********");
+     }
+     return departments;
+    }
+    
     @GetMapping("/services")
     public ResponseEntity<?> services()  {
        // return new ResponseEntity<Object>(discoveryClient.getServices(), HttpStatus.OK);
