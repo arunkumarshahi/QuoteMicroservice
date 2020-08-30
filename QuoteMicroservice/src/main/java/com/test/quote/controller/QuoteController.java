@@ -3,6 +3,7 @@ package com.test.quote.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,14 +18,16 @@ import com.test.quote.repository.QuoteRepository;
 @RequestMapping("/demo")
 public class QuoteController {
 	private final QuoteRepository quoteRepository;
-
-	public QuoteController(QuoteRepository quoteRepository) {
+	 private final Environment environment;
+	public QuoteController(QuoteRepository quoteRepository,Environment environment) {
 		super();
 		this.quoteRepository = quoteRepository;
+		 this.environment = environment;
 	}
 	@GetMapping("/getQuote/{quoteId}")
 	public QuoteDAO getQuote(@PathVariable String quoteId) {
 		Optional<QuoteDAO> quoteDAO = quoteRepository.findById(quoteId);
+		quoteDAO.get().setCustRefrence(environment.getProperty("server.port"));
 		return quoteDAO.orElseThrow(()->new RuntimeException("invalid record...."));
 
 	}
