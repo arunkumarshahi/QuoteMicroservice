@@ -15,7 +15,7 @@ import com.test.quote.model.QuoteTO;
 
 
 @FeignClient(name = "quoteapp", fallback = UserClientFallback.class)
-//@FeignClient(name = "hello-service", fallback = UserClientFallback.class)
+@RibbonClient(name="quoteapp")
 public interface ServiceClient {
 
 	@GetMapping("/demo/getQuote")
