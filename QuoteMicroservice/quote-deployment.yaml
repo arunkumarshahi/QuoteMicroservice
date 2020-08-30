@@ -1,0 +1,52 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: quoteapp
+  name: quoteapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: quoteapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: quoteapp
+    spec:
+      containers:
+      - image: arunkumarshahi/quote-demo
+        name: quoteapp
+        
+        env:
+            - name: MONGO_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: username
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: password
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: quoteapp
+  name: quoteapp
+spec:
+  selector:
+    app: quoteapp
+  ports:
+  - protocol: TCP
+    port: 8080
+    nodePort: 30086
+  type: NodePort

@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: meow-ingress
+spec:
+  tls:
+  - hosts:
+    - localhost
+  rules:
+  - http:
+      paths:
+      - path: /tea
+        backend:
+          serviceName: tea-svc
+          servicePort: 80
+      - path: /client
+        backend:
+          serviceName: client-service
+          servicePort: 8080
+      - path: /demo
+        backend:
+          serviceName: quoteapp
+          servicePort: 8080
