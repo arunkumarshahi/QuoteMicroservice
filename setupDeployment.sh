@@ -1,7 +1,10 @@
+sudo git pull 
+
 sudo minikube delete
 sudo minikube start
 
 sudo ./startup.sh
+
 cd QuoteMicroservice-client
 sudo mvn clean install
 sudo ./deployment-service-client.sh
