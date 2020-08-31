@@ -11,10 +11,10 @@ spec:
   rules:
   - http:
       paths:
-      - path: /tea
+      - path: /
         backend:
-          serviceName: tea-svc
-          servicePort: 80
+          serviceName: client-service
+          servicePort: 8080
       - path: /client
         backend:
           serviceName: client-service
