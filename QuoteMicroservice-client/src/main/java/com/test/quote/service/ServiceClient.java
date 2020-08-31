@@ -3,8 +3,9 @@ package com.test.quote.service;
 import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.cloud.netflix.feign.FeignClient;
+
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
