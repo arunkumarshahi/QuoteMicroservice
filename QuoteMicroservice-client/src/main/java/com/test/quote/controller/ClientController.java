@@ -20,7 +20,7 @@ import com.test.quote.service.ServiceClient;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/client")
+@RequestMapping("/api")
 @Slf4j
 public class ClientController {
 //

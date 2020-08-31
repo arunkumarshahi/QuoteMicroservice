@@ -20,13 +20,13 @@ import com.test.quote.model.QuoteTO;
 @RibbonClient(name="quoteapp")
 public interface ServiceClient {
 
-	@GetMapping("/demo/getQuote")
+	@GetMapping("/demo/api/getQuote")
 	//@RequestMapping(method = RequestMethod.GET, value = "/demo/getQuote", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     //@RequestMapping(value = "/demo/getQuote/{quoteId}", method = RequestMethod.GET)
 	//@GetMapping("/demo/getQuote")
 	public List<QuoteTO>  getQuotes() ;
 	
-	@GetMapping("/demo/getQuote/{quoteId}")
+	@GetMapping("/demo/api/getQuote/{quoteId}")
 	//@RequestMapping(method = RequestMethod.GET, value = "/demo/getQuote", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     //@RequestMapping(value = "/demo/getQuote/{quoteId}", method = RequestMethod.GET)
 	//@GetMapping("/demo/getQuote")

@@ -15,7 +15,7 @@ import com.test.quote.model.QuoteDAO;
 import com.test.quote.repository.QuoteRepository;
 
 @RestController
-@RequestMapping("/demo")
+@RequestMapping("/api")
 public class QuoteController {
 	private final QuoteRepository quoteRepository;
 	 private final Environment environment;
