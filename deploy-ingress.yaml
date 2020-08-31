@@ -3,11 +3,11 @@ kind: Ingress
 metadata:
   name: meow-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /test/
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  tls:
-  - hosts:
-    - localhost
+  backend:
+    serviceName: default-http-backend
+    servicePort: 80
   rules:
   - http:
       paths:
